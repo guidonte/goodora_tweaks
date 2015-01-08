@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<openerp>
+
+    <data>
+        <record id="contacts.action_contacts_view_kanban" model="ir.actions.act_window.view">
+           <field eval="10" name="sequence"/>
+        </record>
+    </data>
+
+</openerp>
+

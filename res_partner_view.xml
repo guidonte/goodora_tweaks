@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<openerp>
+
+    <data>
+        <!-- Fix search parameters of default Customers/Suppliers form -->
+        <record id="view_res_partner_filter" model="ir.ui.view">
+            <field name="name">res.partner.select.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="/search/field[@name='name']" position="replace">
+                   <field name="name" filter_domain="[('display_name', 'ilike', self)]"/>
+                   <!--field name="name" filter_domain="['|',('display_name','ilike',self),('email,'ilike',self)]"/-->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="base.action_partner_customer_form" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record id="base.action_partner_supplier_form" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record id="base.action_partner_form_view1" model="ir.actions.act_window.view">
+           <field eval="10" name="sequence"/>
+        </record>
+    </data>
+
+</openerp>
+

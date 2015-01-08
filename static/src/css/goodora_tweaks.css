@@ -1,0 +1,23 @@
+.openerp .oe_login button,
+.openerp .oe_login .oe_oauth_provider_login_button {
+  font-family: 'Lucida Grande', Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 0px;
+  border: 0px;
+
+  color: white;
+  background-color: #8C1313;
+  background-image: linear-gradient(#B92020, #600606);
+  box-shadow: none;
+}
+
+.openerp .oe_login button:hover,
+.openerp .oe_login .oe_oauth_provider_login_button:hover {
+  text-decoration: none;
+  background-image: none;
+}
+
+.openerp .oe_login .oe_oauth_provider_login_button::before {
+}
+

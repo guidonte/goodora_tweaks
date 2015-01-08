@@ -1,0 +1,25 @@
+<templates>
+
+    <t t-extend="Login">
+        <t t-jquery="div.oe_login_footer" t-operation="replace">
+            <div class="oe_login_footer">
+                <a href="http://www.openerp.com" target="_blank">Powered by OpenERP</a>
+            </div>
+        </t>
+        <t t-jquery="div.openid_providers a[href='#googleapps']" t-operation="replace"/>
+        <t t-jquery="div.openid_providers a[href='#launchpad']" t-operation="replace"/>
+        <t t-jquery="div.openid_providers a[href='#openid_url']" t-operation="replace"/>
+    </t>
+
+    <t t-extend="UserMenu">
+        <t t-jquery="ul.oe_dropdown_menu li:has([data-menu='account'])" t-operation="replace"/>
+        <t t-jquery="ul.oe_dropdown_menu li:has([data-menu='help'])" t-operation="replace"/>
+    </t>
+
+    <t t-name="FieldPercent" t-extend="FieldChar">
+        <t t-jquery="t:last" t-operation="after">
+        </t>
+    </t>
+
+</templates>
+

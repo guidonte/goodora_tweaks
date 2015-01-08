@@ -1,0 +1,46 @@
+#! /usr/bin/python
+
+import sys
+sys.path.insert (0, '/home/guido/src/openerp/server')
+
+if len (sys.argv) < 2:
+    print "Usage: openerp-shell [DATABASE]\n"
+    sys.exit (1)
+
+DATABASE = sys.argv[1]
+
+import openerp
+
+#addons_path = ','.join([
+#    '/home/guido/src/openerp/addons',
+#    '/home/guido/src/openerp/web/addons',
+#    '/home/guido/dev/goopenerp/trunk/addons',
+#    '/home/guido/src/openerp/server-env-tools',
+#    '/home/guido/src/openerp/openobject-italia/8.0_trunk_dev',
+#    '/home/guido/src/openerp/7.0-account_payment',
+#])
+#openerp.tools.config.parse_config (['--addons-path=' + addons_path])
+
+from openerp.netsvc import init_logger
+init_logger ()
+
+from openerp.modules.registry import RegistryManager
+
+pool = registry = RegistryManager.get (DATABASE, update_module=False)
+cr = registry.db.cursor ()
+uid = 1
+
+def run_shell ():
+    try:
+        from IPython.terminal.interactiveshell import TerminalInteractiveShell
+        shell = TerminalInteractiveShell (user_ns=globals ())
+#        if self.options.postmortem:
+#            shell.call_pdb = 1
+        shell.mainloop ()
+    except ImportError:
+        import code
+        shell = code.InteractiveConsole (globals ())
+        shell.interact ()
+
+run_shell ()
+
